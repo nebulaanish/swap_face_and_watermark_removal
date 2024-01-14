@@ -103,4 +103,7 @@ def remove_watermark(image_path, mask_path, final_result_path):
         print("Watermark Error")
         r.raise_for_status()
         
-    
+def image_to_b64(image_path):
+    with open(image_path, "rb") as f:
+        image_file_object = f.read()
+    return image_file_object
