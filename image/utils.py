@@ -5,35 +5,37 @@ import requests
 FACESWAP_API_KEY = ""   # Obtained from rapidapi
 EDENAI_API_KEY = "" # Obtained from edenai
 CLIPDROP_API_KEY = ""   # Obtained from clipdrop website
-
+from django.conf import settings
 
 
 def face_swap(image_url, face_url):
-    url = "https://faceswap-image-transformation-api.p.rapidapi.com/faceswap"
-    headers = {
-        "content-type": "application/json",
-        "X-RapidAPI-Key": FACESWAP_API_KEY,
-        "X-RapidAPI-Host": "faceswap-image-transformation-api.p.rapidapi.com"
-    }
+    if settings.MODE=="prod":  # To save api calls
+        url = "https://faceswap-image-transformation-api.p.rapidapi.com/faceswap"
+        headers = {
+            "content-type": "application/json",
+            "X-RapidAPI-Key": FACESWAP_API_KEY,
+            "X-RapidAPI-Host": "faceswap-image-transformation-api.p.rapidapi.com"
+        }
 
-    payload = {
-        "TargetImageUrl": image_url,
-        "SourceImageUrl": face_url
-    }
+        payload = {
+            "TargetImageUrl": image_url,
+            "SourceImageUrl": face_url
+        }
 
-    try:
-        response = requests.post(url, json=payload, headers=headers)
-        response.raise_for_status()  # Raise an HTTPError for bad responses
-        result_url = response.json().get('ResultImageUrl')
-        return result_url
-    except requests.RequestException as e:
-        error_message = f"Error calling external API 1: {e}"
-        print(error_message)
-        return image_url
+        try:
+            response = requests.post(url, json=payload, headers=headers)
+            response.raise_for_status()  # Raise an HTTPError for bad responses
+            result_url = response.json().get('ResultImageUrl')
+            return result_url
+        except requests.RequestException as e:
+            error_message = f"Error calling external API 1: {e}"
+            print(error_message)
+            return image_url
+    else:
+        result = "https://i.ibb.co/44s61sb/image.jpg"
+        return result
     
-    # For testing purpose to save api calls
-    # result = "https://i.ibb.co/44s61sb/image.jpg"
-    # return result
+    
 
 def download_image(result_url, save_path):
     try: 

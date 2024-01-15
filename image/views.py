@@ -1,3 +1,4 @@
+import requests
 from django.shortcuts import render
 
 from rest_framework.views import APIView
@@ -13,6 +14,8 @@ class ImageView(APIView):
     permission_classes = (IsAuthenticated,)
     def post(self, request, format=None):
         serializer = ImageSerializer(data=request.data)
+        if not serializer:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         if serializer.is_valid():
             instance = serializer.save()   
             instance.result_url = face_swap(instance.image_url, instance.face_url)
@@ -45,9 +48,14 @@ class FaceSwapView(APIView):
             instance = serializer.save()   
             instance.result_url = face_swap(instance.image_url, instance.face_url)
             instance.save()
+            print(instance.result_url)
             result_path = f'media/results/{instance.pk}_result.jpg'
+            instance.result_image_path = result_path
             download_image(instance.result_url, result_path)   
-            return Response({'result_image': image_to_b64(result_path)})
+            response = requests.get(instance.result_url)
+            print(response.content)
+            return Response({'result_image': f"{response.content}"})
+            
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class RemoveWatermarkView(APIView):

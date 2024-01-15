@@ -4,13 +4,31 @@ Content-Type: application/json
 
 {"email":"user@user.com", "password":"user"}
 
-### 
-GET http://localhost:8000/image/hello/
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1MjI3NzY2LCJpYXQiOjE3MDUyMjc0NjYsImp0aSI6ImM3NzE0ODE5ZTY4NDRjNzNiN2Y1MGIxNjMwMjI1YWYyIiwidXNlcl9pZCI6MX0.XDcQl7_nLfoY81w2taFSN891E21SbrXPrSXKWlEkKp4
-
-
-###
+### Combined api call
 POST http://localhost:8000/image/combined/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1MzE2MjQ5LCJpYXQiOjE3MDUzMTU5NDksImp0aSI6Ijk2MmVmZWIyMzE4YTQ2NWY5NjZmYWMyZTVjY2U4ZjM3IiwidXNlcl9pZCI6MX0.HzWSTvGFdcNd-OS0Yb9wfpYdjdmH17Ih68fVAtuK8U8
 
+{
+    "image_url":"", 
+    "face_url":""
+}
+
+
+### Face api call
+POST http://localhost:8000/image/faceswap/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1MzE2OTk1LCJpYXQiOjE3MDUzMTY2OTUsImp0aSI6IjgxMGMyYTA5ZGQyNTRmYmY5NTM0NDkwNWMzMjVlZGRjIiwidXNlcl9pZCI6MX0.Fj4rdoVAkQuIbxu75ugeopg7TZ5w-7pNxN7N17AcmsY
+
+{
+    "image_url":"https://www.lindadress.com/content/res/large/l93/0009330_wedding_dresses_wm.jpeg", 
+    "face_url":"https://www.lindadress.com/content/res/large/l93/0009335_cocktail_dress_wm.jpeg"
+}
+
+Output
+{
+    "result_image": "image bytes"
+}
+
+
+### Watermark api call
