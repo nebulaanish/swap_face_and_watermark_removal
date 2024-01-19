@@ -2,9 +2,11 @@ import os
 import cv2
 import numpy as np
 import requests
-FACESWAP_API_KEY = ""   # Obtained from rapidapi
-EDENAI_API_KEY = "" # Obtained from edenai
-CLIPDROP_API_KEY = ""   # Obtained from clipdrop website
+  # Obtained from clipdrop website
+
+FACESWAP_API_KEY = ""
+EDENAI_API_KEY = ""
+CLIPDROP_API_KEY = ""
 from django.conf import settings
 
 
@@ -51,6 +53,7 @@ def download_image(result_url, save_path):
 def create_mask(result_url, result_path, mask_path):
     mask_width, mask_height = get_dimensions(result_path)
     response = detect_logo(result_path)
+    
     mask = np.zeros((mask_height, mask_width, 4), dtype=np.uint8)
     mask[:, :, 3] = 0  
     vertices = response["google"]["items"][0]["bounding_poly"]["vertices"]

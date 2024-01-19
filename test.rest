@@ -7,18 +7,18 @@ Content-Type: application/json
 ### Combined api call
 POST http://localhost:8000/image/combined/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1MzE5MzIxLCJpYXQiOjE3MDUzMTkwMjEsImp0aSI6IjM3YzNlYzhmYzljMDQwN2ZiMzk3NzhiOWEyN2EyYWYwIiwidXNlcl9pZCI6MX0.67vk5j6rRPzKbWShVPImxNgp0lFIt4q3AReKykG8Q2w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1NjUxNzA4LCJpYXQiOjE3MDU2NTE0MDgsImp0aSI6IjU5ZjBiYzUwZjdlNDRlMTY5ZjRhNGM0MzIyMmQ2MWQwIiwidXNlcl9pZCI6MX0.8kH2rHX5OKPkOkT56_n4t1RidjlUTHl_sk8YHcbKwU8
 
 {
-    "image_url":"", 
-    "face_url":""
+    "image_url":"https://www.lindadress.com/content/res/large/l93/0009330_wedding_dresses_wm.jpeg", 
+    "face_url":"https://www.lindadress.com/content/res/large/l93/0009335_cocktail_dress_wm.jpeg"
 }
 
 
 ### Face api call
 POST http://localhost:8000/image/faceswap/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1MzE5MzIxLCJpYXQiOjE3MDUzMTkwMjEsImp0aSI6IjM3YzNlYzhmYzljMDQwN2ZiMzk3NzhiOWEyN2EyYWYwIiwidXNlcl9pZCI6MX0.67vk5j6rRPzKbWShVPImxNgp0lFIt4q3AReKykG8Q2w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1NjUxODMxLCJpYXQiOjE3MDU2NTE1MzEsImp0aSI6IjkwNjc1NjlhN2Y0NDQxNDA4NzU3ZThhOWYwZWRmMTBhIiwidXNlcl9pZCI6MX0.JPnzEcTOBw-iG44Vj8ETaj8Lh-0w5D8pGzxdXiI_QmI
 
 {
     "image_url":"https://www.lindadress.com/content/res/large/l93/0009330_wedding_dresses_wm.jpeg", 
@@ -27,3 +27,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY
 
 
 ### Watermark api call
+
