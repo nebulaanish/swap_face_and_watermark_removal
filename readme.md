@@ -1,9 +1,38 @@
-# Image API 
-It is an image processing api which is made by combining the usage of several third party apis. The api has following features
-- Swap the face of a person onto a different person's face.
-- Remove watermark from the image. 
-- Replace background (This logic is not implemented yet because of no pro account of the clipdrop api, which is essential to get this function up and running.)
+# Face Swap and Watermark Removal 
+It is an api that allows swapping of faces to the target face while also removing any logo/watermark in the image. The current build only supports removal of any one most prominent logo, it can be improvised to remove every logo present in an image. The process is explained below.
 
+1. Pass image and face url to Faceswap api.
+2. Detect logo with google's vision api.
+3. Create a mask of the image where logo is to be removed.
+4. Pass it to inpainting api at clipdrop.
+
+**Examples**
+
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Face</th>
+            <th>Face Swap Result</th>
+            <th>Final Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img src="samples/input/image1.png" alt="Image 1"></td>
+            <td><img src="samples/input/face.png" alt="Image 1">  </td>
+            <td><img src="samples/faceswap_result/face1.jpg" alt="Image 1"></td>
+            <td><img src="samples/final/final1.jpg" alt="Image 1"></td>
+        </tr>
+        <tr>
+            <td><img src="samples/input/image2.png" alt="Image 1"></td>
+            <td><img src="samples/input/face.png" alt="Image 1">  </td>
+            <td><img src="samples/faceswap_result/face2.jpg" alt="Image 1"></td>
+            <td><img src="samples/final/final2.jpg" alt="Image 1"></td>
+        </tr>
+        
+   
+</table>
 
 ## Local Deployment Steps
 - Clone repository locally. 
